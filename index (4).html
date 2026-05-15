@@ -1,0 +1,2380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>QMS India Limited — Sustainable Solutions for Industry</title>
+<meta name="description" content="QMS India Limited — Consultants, Auditors, Trainers in Quality, Sustainability, HSE, Energy. Serving 2500+ industries across 26 states. ISO 9001, ISO 14001, ISO 45001 certified." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700;9..144,800&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ======================= TOKENS ======================= */
+:root{
+  --orange:#F47920;
+  --orange-bright:#FF8A2B;
+  --orange-deep:#D4621A;
+  --ink:#0E0E10;
+  --ink-soft:#1A1A1F;
+  --ink-mid:#2A2A30;
+  --line:#222227;
+  --line-soft:#E8E5DE;
+  --cream:#F5F1EA;
+  --cream-warm:#EEE8DC;
+  --paper:#FAF7F2;
+  --white:#ffffff;
+  --muted:#7A7770;
+  --display:'Fraunces', 'Times New Roman', serif;
+  --body:'Manrope', system-ui, sans-serif;
+  --ease:cubic-bezier(.7,.05,.15,1);
+  --ease-out:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);
+  background:var(--paper);
+  color:var(--ink);
+  font-weight:400;
+  line-height:1.5;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+
+/* ===== Custom cursor follower (subtle dot) ===== */
+.cursor-dot{
+  position:fixed;
+  top:0;left:0;
+  width:8px;height:8px;
+  background:var(--orange);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  mix-blend-mode:difference;
+  transition:transform .15s var(--ease-out),width .25s var(--ease),height .25s var(--ease);
+  transform:translate(-50%,-50%);
+  display:none;
+}
+@media (min-width:1024px){
+  .cursor-dot{display:block}
+  .cursor-dot.hover{width:48px;height:48px;background:var(--orange-bright)}
+}
+
+/* ======================= NAV ======================= */
+.nav{
+  position:fixed;
+  top:0;left:0;right:0;
+  z-index:100;
+  padding:18px 40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  transition:background .4s var(--ease),padding .4s var(--ease),border-color .4s var(--ease);
+  border-bottom:1px solid transparent;
+}
+.nav.scrolled{
+  background:rgba(250,247,242,.92);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  padding:14px 40px;
+  border-bottom:1px solid var(--line-soft);
+}
+.nav.dark{color:var(--white)}
+.nav.dark.scrolled{color:var(--ink)}
+.brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:-.02em}
+.brand-mark{
+  width:34px;height:34px;
+  background:var(--orange);
+  display:grid;place-items:center;
+  color:#fff;
+  font-family:var(--display);
+  font-weight:800;
+  font-size:18px;
+  position:relative;
+}
+.brand-mark::after{
+  content:"";
+  position:absolute;
+  inset:auto -6px -6px auto;
+  width:14px;height:14px;
+  background:var(--ink);
+}
+.nav.dark .brand-mark::after{background:#fff}
+.nav-links{display:flex;align-items:center;gap:34px;font-size:14px;font-weight:500}
+.nav-links a{position:relative;padding:6px 0;transition:opacity .2s}
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0;bottom:0;
+  height:1px;width:0;
+  background:currentColor;
+  transition:width .35s var(--ease);
+}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+  padding:12px 24px;
+  background:var(--orange);
+  color:#fff !important;
+  font-weight:600;
+  font-size:13px;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+  border-radius:50px;
+  transition:background .3s,transform .3s var(--ease);
+  display:inline-flex;align-items:center;gap:10px;
+}
+.nav-cta:hover{background:var(--orange-deep);transform:translateX(2px)}
+.nav-cta::after{content:"→";font-size:16px;transition:transform .3s}
+.nav-cta:hover::after{transform:translateX(4px)}
+@media(max-width:900px){
+  .nav-links{display:none}
+  .nav{padding:14px 20px}
+}
+
+/* ======================= HERO ======================= */
+.hero{
+  position:relative;
+  min-height:100vh;
+  background:var(--ink);
+  color:var(--white);
+  overflow:hidden;
+  display:flex;
+  align-items:flex-end;
+  padding:120px 40px 80px;
+}
+.hero-bg{
+  position:absolute;
+  inset:0;
+  z-index:0;
+}
+.hero-bg img{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  opacity:0;
+  transform:scale(1.08);
+  filter:saturate(.75) contrast(1.1);
+  transition:opacity 1.8s ease, transform 12s linear;
+}
+.hero-bg img.bg-active{
+  opacity:.48;
+  transform:scale(1);
+}
+.hero-bg::after{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg,rgba(14,14,16,.6) 0%,rgba(14,14,16,.3) 40%,rgba(14,14,16,.95) 100%),
+    linear-gradient(90deg,rgba(14,14,16,.7) 0%,transparent 60%);
+}
+.hero-inner{
+  position:relative;
+  z-index:2;
+  max-width:1400px;
+  margin:0 auto;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr auto;
+  align-items:end;
+  gap:60px;
+}
+.hero-eyebrow{
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--orange-bright);
+  margin-bottom:32px;
+  display:flex;align-items:center;gap:14px;
+  opacity:0;transform:translateY(20px);
+  animation:rise .9s var(--ease-out) .3s forwards;
+}
+.hero-eyebrow::before{
+  content:"";
+  width:40px;height:1px;
+  background:var(--orange-bright);
+}
+.hero-title{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(48px,7.5vw,112px);
+  line-height:.95;
+  letter-spacing:-.035em;
+  margin-bottom:36px;
+  max-width:1100px;
+}
+.hero-title .word{
+  display:inline-block;
+  overflow:hidden;
+  vertical-align:bottom;
+}
+.hero-title .word span{
+  display:inline-block;
+  transform:translateY(110%);
+  animation:rise-up 1.1s var(--ease-out) forwards;
+}
+.hero-title .word:nth-child(1) span{animation-delay:.45s}
+.hero-title .word:nth-child(2) span{animation-delay:.55s}
+.hero-title .word:nth-child(3) span{animation-delay:.65s}
+.hero-title .word:nth-child(4) span{animation-delay:.75s}
+.hero-title .word:nth-child(5) span{animation-delay:.85s}
+.hero-title em{
+  font-style:italic;
+  font-weight:400;
+  color:var(--orange-bright);
+}
+.hero-sub{
+  font-size:18px;
+  max-width:560px;
+  color:rgba(255,255,255,.78);
+  line-height:1.55;
+  opacity:0;transform:translateY(20px);
+  animation:rise 1s var(--ease-out) 1.1s forwards;
+}
+.hero-meta{
+  font-family:var(--display);
+  text-align:right;
+  opacity:0;transform:translateY(20px);
+  animation:rise 1s var(--ease-out) 1.2s forwards;
+}
+.hero-meta .big{
+  font-size:64px;
+  font-weight:300;
+  letter-spacing:-.04em;
+  line-height:1;
+  color:var(--orange-bright);
+}
+.hero-meta .label{
+  font-family:var(--body);
+  font-size:12px;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.6);
+  margin-top:8px;
+}
+@keyframes rise-up{to{transform:translateY(0)}}
+@keyframes rise{to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{to{opacity:1}}
+
+@media(max-width:768px){
+  .hero{padding:100px 20px 60px}
+  .hero-inner{grid-template-columns:1fr;gap:30px}
+  .hero-meta{text-align:left}
+  .hero-meta .big{font-size:48px}
+}
+
+/* ======================= TICKER BAR ======================= */
+.ticker{
+  background:var(--orange);
+  color:#fff;
+  padding:14px 0;
+  overflow:hidden;
+  position:relative;
+  border-top:1px solid rgba(0,0,0,.1);
+}
+.ticker-track{
+  display:flex;
+  gap:50px;
+  animation:ticker 40s linear infinite;
+  white-space:nowrap;
+  width:max-content;
+}
+.ticker-item{
+  display:flex;align-items:center;gap:14px;
+  font-size:13px;font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.ticker-item::before{
+  content:"●";
+  font-size:8px;
+  opacity:.6;
+}
+@keyframes ticker{
+  to{transform:translateX(-50%)}
+}
+
+/* ======================= INTRO STATS ======================= */
+.intro{
+  padding:140px 40px;
+  background:var(--paper);
+  position:relative;
+}
+.intro-inner{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1fr 1.2fr;
+  gap:100px;
+  align-items:start;
+}
+.section-label{
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.3em;
+  text-transform:uppercase;
+  color:var(--orange);
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:28px;
+}
+.section-label::before{
+  content:"";
+  width:30px;height:1px;
+  background:var(--orange);
+}
+.intro h2{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(36px,4.5vw,68px);
+  line-height:1.02;
+  letter-spacing:-.025em;
+  color:var(--ink);
+}
+.intro h2 em{
+  font-style:italic;
+  color:var(--orange);
+  font-weight:400;
+}
+.intro-text{
+  font-size:17px;
+  line-height:1.7;
+  color:#3A3833;
+  max-width:560px;
+}
+.intro-text p+p{margin-top:22px}
+
+.stats{
+  margin-top:100px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+}
+.stat{
+  padding:50px 30px;
+  border-right:1px solid var(--line-soft);
+  position:relative;
+  overflow:hidden;
+  transition:background .4s var(--ease);
+}
+.stat:last-child{border-right:none}
+.stat:hover{background:var(--ink);color:#fff}
+.stat:hover .stat-label{color:rgba(255,255,255,.7)}
+.stat-num{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(48px,6vw,84px);
+  line-height:1;
+  letter-spacing:-.04em;
+  margin-bottom:14px;
+  color:var(--ink);
+  transition:color .4s var(--ease);
+}
+.stat:hover .stat-num{color:var(--orange-bright)}
+.stat-num .plus{color:var(--orange);font-weight:400}
+.stat-label{
+  font-size:13px;
+  font-weight:500;
+  color:var(--muted);
+  letter-spacing:.05em;
+  line-height:1.4;
+  text-transform:uppercase;
+}
+.stat::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:var(--orange);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .5s var(--ease);
+}
+.stat:hover::before{transform:scaleX(1)}
+
+@media(max-width:900px){
+  .intro{padding:80px 20px}
+  .intro-inner{grid-template-columns:1fr;gap:40px}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .stat{border-right:none;border-bottom:1px solid var(--line-soft)}
+  .stat:nth-child(odd){border-right:1px solid var(--line-soft)}
+}
+
+/* ======================= CENTER-MODE CAROUSEL ======================= */
+.carousel-section{
+  padding:140px 0 160px;
+  background:var(--ink);
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+}
+.carousel-section::before{
+  content:"";
+  position:absolute;
+  top:-100px;left:-100px;
+  width:400px;height:400px;
+  background:radial-gradient(circle,rgba(244,121,32,.15),transparent 60%);
+  pointer-events:none;
+}
+.carousel-head{
+  max-width:1400px;
+  margin:0 auto 80px;
+  padding:0 40px;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:40px;
+}
+.carousel-head .section-label{color:var(--orange-bright)}
+.carousel-head h2{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(36px,4.8vw,72px);
+  line-height:1;
+  letter-spacing:-.03em;
+  max-width:780px;
+}
+.carousel-head h2 em{font-style:italic;color:var(--orange-bright);font-weight:400}
+.carousel-counter{
+  font-family:var(--display);
+  font-size:14px;
+  color:rgba(255,255,255,.5);
+  display:flex;align-items:baseline;gap:6px;
+  white-space:nowrap;
+}
+.carousel-counter .current{
+  font-size:48px;
+  color:#fff;
+  font-weight:300;
+  letter-spacing:-.02em;
+}
+.carousel-counter .total{font-size:18px}
+
+.carousel-viewport{
+  width:100%;
+  overflow:hidden;
+  padding:20px 0 30px;
+  position:relative;
+  cursor:grab;
+}
+.carousel-viewport:active{cursor:grabbing}
+.carousel-track{
+  display:flex;
+  gap:30px;
+  transition:transform .8s var(--ease-out);
+  padding:0 calc((100% - 520px) / 2);
+  will-change:transform;
+}
+.carousel-card{
+  flex:0 0 520px;
+  height:620px;
+  position:relative;
+  overflow:hidden;
+  background:var(--ink-soft);
+  transform:scale(.82);
+  opacity:.4;
+  transition:transform .8s var(--ease-out),opacity .8s var(--ease-out),filter .8s var(--ease-out);
+  filter:grayscale(.5) brightness(.7);
+  border-radius:2px;
+}
+.carousel-card.active{
+  transform:scale(1);
+  opacity:1;
+  filter:grayscale(0) brightness(1);
+}
+.carousel-card.adjacent{
+  opacity:.6;
+}
+.carousel-card img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 1.2s var(--ease-out);
+}
+.carousel-card.active:hover img{transform:scale(1.06)}
+.carousel-card-overlay{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(14,14,16,.1) 0%,rgba(14,14,16,.3) 50%,rgba(14,14,16,.95) 100%);
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:40px;
+  color:#fff;
+}
+.carousel-card-num{
+  font-family:var(--display);
+  font-size:14px;
+  color:var(--orange-bright);
+  letter-spacing:.15em;
+  margin-bottom:14px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s .2s var(--ease-out),transform .6s .2s var(--ease-out);
+}
+.carousel-card-title{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:38px;
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin-bottom:14px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s .3s var(--ease-out),transform .6s .3s var(--ease-out);
+}
+.carousel-card-desc{
+  font-size:15px;
+  color:rgba(255,255,255,.78);
+  line-height:1.55;
+  margin-bottom:24px;
+  max-width:380px;
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s .4s var(--ease-out),transform .6s .4s var(--ease-out);
+}
+.carousel-card-link{
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  color:var(--orange-bright);
+  opacity:0;
+  transform:translateY(20px);
+  transition:opacity .6s .5s var(--ease-out),transform .6s .5s var(--ease-out),gap .3s;
+}
+.carousel-card-link:hover{gap:20px}
+.carousel-card-link::after{
+  content:"→";
+  font-size:18px;
+}
+.carousel-card.active .carousel-card-num,
+.carousel-card.active .carousel-card-title,
+.carousel-card.active .carousel-card-desc,
+.carousel-card.active .carousel-card-link{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.carousel-controls{
+  max-width:1400px;
+  margin:60px auto 0;
+  padding:0 40px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+}
+.carousel-progress{
+  flex:1;
+  height:1px;
+  background:rgba(255,255,255,.15);
+  position:relative;
+  overflow:hidden;
+}
+.carousel-progress-bar{
+  position:absolute;
+  top:0;left:0;
+  height:100%;
+  background:var(--orange-bright);
+  transition:width .8s var(--ease-out);
+}
+.carousel-arrows{
+  display:flex;gap:14px;
+}
+.car-arrow{
+  width:60px;height:60px;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:50%;
+  display:grid;place-items:center;
+  transition:all .3s var(--ease);
+  font-size:18px;
+  color:#fff;
+}
+.car-arrow:hover{
+  background:var(--orange);
+  border-color:var(--orange);
+  transform:scale(1.05);
+}
+.car-arrow:disabled{opacity:.3;cursor:not-allowed;transform:none;background:none;border-color:rgba(255,255,255,.15)}
+
+@media(max-width:768px){
+  .carousel-head{flex-direction:column;align-items:flex-start;padding:0 20px}
+  .carousel-card{flex:0 0 85vw;height:520px}
+  .carousel-track{padding:0 7.5vw}
+  .carousel-controls{padding:0 20px}
+}
+
+/* ======================= DEEP WORK HOVER PANELS ======================= */
+.deepwork-section{
+  background:var(--ink);
+  padding:140px 0 160px;
+  position:relative;
+  overflow:hidden;
+}
+.deepwork-section::before{
+  content:"";
+  position:absolute;
+  bottom:-200px;right:-200px;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(244,121,32,.08),transparent 60%);
+  pointer-events:none;
+}
+.deepwork-head{
+  max-width:1400px;
+  margin:0 auto 80px;
+  padding:0 40px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:end;
+}
+.deepwork-head h2{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(36px,4.8vw,72px);
+  line-height:1;
+  letter-spacing:-.03em;
+  color:var(--white);
+}
+.deepwork-head h2 em{font-style:italic;color:var(--orange-bright);font-weight:400}
+.deepwork-head p{
+  font-size:17px;
+  line-height:1.7;
+  color:rgba(255,255,255,.6);
+}
+
+/* Panel container — the interactive strip */
+.panel-strip{
+  display:flex;
+  width:100%;
+  height:680px;
+  position:relative;
+}
+
+/* Side number columns */
+.panel-side{
+  flex:0 0 140px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  padding:40px 30px;
+  position:relative;
+  z-index:2;
+  pointer-events:none;
+}
+.panel-side-num{
+  font-family:var(--display);
+  font-size:clamp(52px,7vw,96px);
+  font-weight:300;
+  letter-spacing:-.04em;
+  line-height:1;
+  color:rgba(255,255,255,.12);
+  transition:color .5s var(--ease);
+}
+.panel-side-label{
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+  color:rgba(255,255,255,.3);
+  writing-mode:vertical-rl;
+  transform:rotate(180deg);
+  transition:color .5s var(--ease);
+}
+.panel-side.left{ padding-left:48px; }
+.panel-side.right{ padding-right:48px; align-items:flex-end; }
+
+/* Central image stage */
+.panel-stage{
+  flex:1;
+  position:relative;
+  overflow:hidden;
+  cursor:pointer;
+}
+
+/* Individual panels */
+.panel-item{
+  position:absolute;
+  top:0;bottom:0;
+  transition:left .75s var(--ease-out), right .75s var(--ease-out), width .75s var(--ease-out), opacity .5s var(--ease);
+  overflow:hidden;
+}
+.panel-item img{
+  position:absolute;
+  inset:0;
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform 1.4s var(--ease-out), filter .75s var(--ease);
+  filter:saturate(.5) brightness(.55);
+}
+.panel-item.active img{
+  filter:saturate(1) brightness(.85);
+  transform:scale(1.04);
+}
+.panel-item:not(.active):hover img{
+  filter:saturate(.7) brightness(.65);
+}
+
+/* Dark gradient overlay */
+.panel-item::before{
+  content:"";
+  position:absolute;inset:0;
+  background:
+    linear-gradient(180deg, rgba(14,14,16,.15) 0%, rgba(14,14,16,.1) 30%, rgba(14,14,16,.92) 100%),
+    linear-gradient(90deg, rgba(14,14,16,.4) 0%, transparent 40%);
+  z-index:1;
+  pointer-events:none;
+  transition:opacity .5s var(--ease);
+}
+.panel-item:not(.active)::before{
+  background:linear-gradient(180deg, rgba(14,14,16,.4) 0%, rgba(14,14,16,.85) 100%);
+}
+
+/* Inactive panel content — number + title only */
+.panel-inactive-label{
+  position:absolute;
+  z-index:3;
+  bottom:40px;
+  left:28px;
+  pointer-events:none;
+}
+.panel-item.active .panel-inactive-label{ opacity:0; }
+.panel-inactive-label .p-num{
+  font-family:var(--display);
+  font-size:13px;
+  color:var(--orange-bright);
+  letter-spacing:.15em;
+  margin-bottom:10px;
+}
+.panel-inactive-label .p-title{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(18px,2.2vw,26px);
+  line-height:1.1;
+  letter-spacing:-.01em;
+  color:rgba(255,255,255,.75);
+  max-width:180px;
+}
+
+/* "Now playing" dot */
+.panel-playing{
+  position:absolute;
+  bottom:44px;
+  left:28px;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--orange-bright);
+  opacity:0;
+  transform:translateY(12px);
+  transition:opacity .5s .5s var(--ease-out), transform .5s .5s var(--ease-out);
+}
+.panel-item.active .panel-playing{
+  opacity:1;transform:translateY(0);
+}
+.panel-playing::before{
+  content:"";
+  width:8px;height:8px;
+  border-radius:50%;
+  background:var(--orange-bright);
+  animation:pulse-dot 1.6s ease-in-out infinite;
+}
+@keyframes pulse-dot{
+  0%,100%{box-shadow:0 0 0 0 rgba(255,138,43,.5)}
+  50%{box-shadow:0 0 0 6px rgba(255,138,43,0)}
+}
+
+/* Active panel overlay content */
+.panel-content{
+  position:absolute;
+  inset:0;
+  z-index:4;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+  padding:48px 48px 36px;
+  pointer-events:none;
+}
+.panel-item:not(.active) .panel-content{ pointer-events:none; }
+.panel-tag{
+  display:inline-block;
+  background:var(--orange);
+  color:#fff;
+  padding:6px 14px;
+  font-size:11px;
+  font-weight:600;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+  align-self:flex-start;
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .5s .25s var(--ease-out), transform .5s .25s var(--ease-out);
+}
+.panel-item.active .panel-tag{ opacity:1;transform:translateY(0); }
+
+.panel-num-label{
+  font-family:var(--display);
+  font-size:13px;
+  color:var(--orange-bright);
+  letter-spacing:.15em;
+  margin-bottom:14px;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .5s .35s var(--ease-out), transform .5s .35s var(--ease-out);
+}
+.panel-item.active .panel-num-label{ opacity:1;transform:translateY(0); }
+
+.panel-title{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:clamp(28px,3.2vw,48px);
+  line-height:1.05;
+  letter-spacing:-.025em;
+  color:#fff;
+  margin-bottom:18px;
+  max-width:580px;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .5s .45s var(--ease-out), transform .5s .45s var(--ease-out);
+}
+.panel-title em{font-style:italic;color:var(--orange-bright)}
+.panel-item.active .panel-title{ opacity:1;transform:translateY(0); }
+
+.panel-desc{
+  font-size:15px;
+  color:rgba(255,255,255,.78);
+  line-height:1.6;
+  max-width:520px;
+  margin-bottom:28px;
+  opacity:0;transform:translateY(18px);
+  transition:opacity .5s .55s var(--ease-out), transform .5s .55s var(--ease-out);
+}
+.panel-item.active .panel-desc{ opacity:1;transform:translateY(0); }
+
+.panel-chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:30px;
+  opacity:0;transform:translateY(16px);
+  transition:opacity .5s .65s var(--ease-out), transform .5s .65s var(--ease-out);
+}
+.panel-item.active .panel-chips{ opacity:1;transform:translateY(0); }
+.panel-chip{
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.06em;
+  padding:7px 14px;
+  border:1px solid rgba(255,255,255,.2);
+  color:rgba(255,255,255,.8);
+  border-radius:50px;
+  background:rgba(255,255,255,.06);
+  backdrop-filter:blur(8px);
+  transition:background .3s, border-color .3s;
+}
+.panel-chip:hover{background:rgba(244,121,32,.2);border-color:rgba(244,121,32,.5)}
+
+.panel-cta-link{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--orange-bright);
+  border-bottom:1px solid rgba(255,138,43,.4);
+  padding-bottom:6px;
+  align-self:flex-start;
+  pointer-events:all;
+  opacity:0;transform:translateY(14px);
+  transition:opacity .5s .75s var(--ease-out), transform .5s .75s var(--ease-out), gap .3s, color .3s;
+}
+.panel-cta-link::after{content:"→";font-size:16px;transition:transform .3s}
+.panel-cta-link:hover{gap:20px;color:#fff}
+.panel-cta-link:hover::after{transform:translateX(5px)}
+.panel-item.active .panel-cta-link{ opacity:1;transform:translateY(0); }
+
+/* Default widths: inactive vs active */
+.panel-item.p1{ left:0; width:35%; }
+.panel-item.p2{ right:0; width:35%; }
+.panel-item.p1.active{ left:0; width:65%; }
+.panel-item.p2.active{ right:0; width:65%; }
+
+/* Divider line */
+.panel-divider{
+  position:absolute;
+  top:0;bottom:0;
+  width:1px;
+  background:rgba(255,255,255,.15);
+  z-index:10;
+  pointer-events:none;
+  transition:left .75s var(--ease-out), right .75s var(--ease-out);
+}
+.panel-divider.div1{ left:35%; }
+.panel-item.p1.active ~ .panel-divider.div1,
+.panel-strip.active-left .panel-divider.div1{ left:65%; }
+
+/* Hover hint on inactive panel */
+.panel-hover-hint{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  z-index:5;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+  transition:opacity .4s var(--ease);
+  pointer-events:none;
+}
+.panel-item.active .panel-hover-hint{ opacity:0; }
+.panel-item:not(.active):hover .panel-hover-hint{ opacity:0; }
+.hint-circle{
+  width:52px;height:52px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.3);
+  display:grid;place-items:center;
+  font-size:20px;
+  color:rgba(255,255,255,.6);
+  background:rgba(14,14,16,.4);
+  backdrop-filter:blur(8px);
+  transition:transform .4s var(--ease), border-color .4s;
+}
+.panel-item:not(.active):hover .hint-circle{
+  transform:scale(1.15);
+  border-color:var(--orange-bright);
+}
+
+@media(max-width:900px){
+  .deepwork-section{padding:80px 0 100px}
+  .deepwork-head{grid-template-columns:1fr;gap:30px;padding:0 20px;margin-bottom:50px}
+  .panel-strip{flex-direction:column;height:auto}
+  .panel-side{display:none}
+  .panel-item{position:relative;width:100% !important;left:auto !important;right:auto !important;height:520px}
+  .panel-item.p1,.panel-item.p2{width:100% !important}
+  .panel-item.active{height:680px}
+  .panel-divider{display:none}
+  .panel-content{padding:32px 24px 28px}
+}
+
+/* ======================= SECTOR GRID ======================= */
+.sectors{
+  background:var(--paper);
+  padding:160px 40px;
+}
+.sectors-inner{
+  max-width:1400px;
+  margin:0 auto;
+}
+.sectors-head{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  margin-bottom:80px;
+  align-items:end;
+}
+.sectors-head h2{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(36px,4.5vw,68px);
+  line-height:1;
+  letter-spacing:-.03em;
+}
+.sectors-head h2 em{font-style:italic;color:var(--orange);font-weight:400}
+.sectors-head p{
+  font-size:17px;
+  line-height:1.7;
+  color:#3A3833;
+}
+.sector-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--line-soft);
+  border-left:1px solid var(--line-soft);
+}
+.sector{
+  border-right:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+  padding:40px 30px;
+  position:relative;
+  overflow:hidden;
+  min-height:280px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:color .5s var(--ease);
+  cursor:pointer;
+}
+.sector::before{
+  content:"";
+  position:absolute;inset:0;
+  background:var(--ink);
+  transform:translateY(101%);
+  transition:transform .6s var(--ease-out);
+  z-index:0;
+}
+.sector:hover{color:#fff}
+.sector:hover::before{transform:translateY(0)}
+.sector > *{position:relative;z-index:1}
+.sector-num{
+  font-family:var(--display);
+  font-size:14px;
+  color:var(--muted);
+  letter-spacing:.1em;
+  transition:color .5s var(--ease);
+}
+.sector:hover .sector-num{color:var(--orange-bright)}
+.sector-name{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:28px;
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin-top:auto;
+}
+.sector-arrow{
+  position:absolute;
+  bottom:30px;right:30px;
+  font-size:20px;
+  opacity:0;
+  transform:translate(-10px,10px);
+  transition:opacity .4s .1s var(--ease),transform .4s .1s var(--ease);
+  color:var(--orange-bright);
+  z-index:1;
+}
+.sector:hover .sector-arrow{opacity:1;transform:translate(0,0)}
+
+@media(max-width:900px){
+  .sectors{padding:80px 20px}
+  .sectors-head{grid-template-columns:1fr;gap:30px;margin-bottom:40px}
+  .sector-grid{grid-template-columns:repeat(2,1fr)}
+  .sector{min-height:200px;padding:30px 20px}
+  .sector-name{font-size:22px}
+}
+
+/* ======================= CLIENT MARQUEE ======================= */
+.clients{
+  padding:100px 0;
+  background:var(--cream-warm);
+  border-top:1px solid var(--line-soft);
+  border-bottom:1px solid var(--line-soft);
+  overflow:hidden;
+}
+.clients-head{
+  max-width:1400px;
+  margin:0 auto 60px;
+  padding:0 40px;
+  text-align:center;
+}
+.clients-head h2{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(28px,3.2vw,48px);
+  letter-spacing:-.02em;
+  line-height:1.1;
+}
+.clients-head h2 em{font-style:italic;color:var(--orange)}
+.clients-head p{
+  margin-top:16px;
+  font-size:15px;
+  color:var(--muted);
+}
+.marquee{
+  display:flex;
+  gap:80px;
+  animation:marquee 50s linear infinite;
+  width:max-content;
+}
+.marquee:hover{animation-play-state:paused}
+.client-logo{
+  font-family:var(--display);
+  font-weight:500;
+  font-size:32px;
+  letter-spacing:-.02em;
+  color:var(--ink);
+  white-space:nowrap;
+  opacity:.55;
+  transition:opacity .3s,color .3s;
+}
+.client-logo:hover{opacity:1;color:var(--orange)}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ======================= AWARDS / TIMELINE ======================= */
+.awards{
+  background:var(--ink);
+  color:#fff;
+  padding:140px 40px;
+  position:relative;
+  overflow:hidden;
+}
+.awards-inner{
+  max-width:1400px;
+  margin:0 auto;
+}
+.awards-head{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  margin-bottom:90px;
+  align-items:end;
+}
+.awards-head h2{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(36px,4.5vw,68px);
+  line-height:1;
+  letter-spacing:-.03em;
+}
+.awards-head h2 em{font-style:italic;color:var(--orange-bright);font-weight:400}
+.awards-head .section-label{color:var(--orange-bright)}
+.awards-head p{font-size:17px;line-height:1.7;color:rgba(255,255,255,.7)}
+.timeline{
+  position:relative;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:0;
+}
+.timeline::before{
+  content:"";
+  position:absolute;
+  top:60px;left:0;right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.25) 10%,rgba(255,255,255,.25) 90%,transparent);
+}
+.timeline-item{
+  padding:0 25px;
+  position:relative;
+  text-align:left;
+}
+.timeline-year{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:64px;
+  letter-spacing:-.04em;
+  color:var(--orange-bright);
+  line-height:1;
+  position:relative;
+  display:inline-block;
+}
+.timeline-year::after{
+  content:"";
+  position:absolute;
+  top:80px;left:0;
+  width:14px;height:14px;
+  background:var(--orange);
+  border-radius:50%;
+  border:3px solid var(--ink);
+  box-shadow:0 0 0 1px rgba(255,255,255,.25);
+}
+.timeline-body{
+  margin-top:80px;
+  padding-right:20px;
+}
+.timeline-body h4{
+  font-family:var(--display);
+  font-weight:400;
+  font-size:20px;
+  line-height:1.2;
+  margin-bottom:10px;
+  letter-spacing:-.01em;
+}
+.timeline-body p{
+  font-size:13px;
+  color:rgba(255,255,255,.6);
+  line-height:1.5;
+}
+
+@media(max-width:900px){
+  .awards{padding:80px 20px}
+  .awards-head{grid-template-columns:1fr;gap:30px;margin-bottom:50px}
+  .timeline{grid-template-columns:1fr;gap:40px}
+  .timeline::before{left:6px;top:0;bottom:0;width:1px;height:auto;background:rgba(255,255,255,.2)}
+  .timeline-item{padding-left:40px}
+  .timeline-year::after{left:-40px;top:18px}
+  .timeline-body{margin-top:14px}
+}
+
+/* ======================= CTA / FOOTER ======================= */
+.cta-band{
+  background:var(--orange);
+  color:#fff;
+  padding:120px 40px;
+  position:relative;
+  overflow:hidden;
+}
+.cta-band::before{
+  content:"";
+  position:absolute;
+  top:-50%;right:-10%;
+  width:600px;height:600px;
+  background:radial-gradient(circle,rgba(255,255,255,.15),transparent 70%);
+  pointer-events:none;
+}
+.cta-inner{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.4fr 1fr;
+  gap:80px;
+  align-items:center;
+  position:relative;
+  z-index:1;
+}
+.cta-inner h2{
+  font-family:var(--display);
+  font-weight:300;
+  font-size:clamp(40px,5.5vw,82px);
+  line-height:1;
+  letter-spacing:-.03em;
+}
+.cta-inner h2 em{font-style:italic}
+.cta-side p{
+  font-size:18px;
+  line-height:1.6;
+  margin-bottom:30px;
+}
+.cta-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  padding:22px 32px;
+  background:var(--ink);
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  transition:all .3s var(--ease);
+}
+.cta-btn::after{content:"→";font-size:18px;transition:transform .3s}
+.cta-btn:hover{background:#fff;color:var(--ink)}
+.cta-btn:hover::after{transform:translateX(6px)}
+
+@media(max-width:900px){
+  .cta-band{padding:80px 20px}
+  .cta-inner{grid-template-columns:1fr;gap:30px}
+}
+
+footer{
+  background:var(--ink);
+  color:rgba(255,255,255,.7);
+  padding:80px 40px 40px;
+}
+.foot-inner{
+  max-width:1400px;
+  margin:0 auto;
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr 1fr;
+  gap:60px;
+}
+.foot-brand{
+  font-family:var(--display);
+  color:#fff;
+}
+.foot-brand .brand{margin-bottom:24px}
+.foot-brand p{font-size:14px;line-height:1.6;color:rgba(255,255,255,.55);max-width:340px}
+.foot h5{
+  font-family:var(--body);
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+  color:var(--orange-bright);
+  margin-bottom:24px;
+}
+.foot ul{list-style:none}
+.foot ul li{margin-bottom:10px;font-size:14px}
+.foot ul li a{transition:color .2s}
+.foot ul li a:hover{color:var(--orange-bright)}
+.foot-bottom{
+  max-width:1400px;
+  margin:80px auto 0;
+  padding-top:30px;
+  border-top:1px solid rgba(255,255,255,.1);
+  display:flex;
+  justify-content:space-between;
+  font-size:12px;
+  color:rgba(255,255,255,.4);
+  letter-spacing:.05em;
+}
+@media(max-width:900px){
+  footer{padding:60px 20px 30px}
+  .foot-inner{grid-template-columns:1fr 1fr;gap:40px}
+  .foot-bottom{flex-direction:column;gap:14px}
+}
+
+/* ======================= REVEAL ON SCROLL ======================= */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease-out),transform 1s var(--ease-out)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+
+/* selection */
+::selection{background:var(--orange);color:#fff}
+
+/* ===== CAROUSEL DOPAMINE PACK ===== */
+
+/* Perspective for 3D tilt */
+.carousel-viewport{
+  perspective:1400px;
+  perspective-origin:50% 50%;
+}
+.carousel-card{
+  transform-style:preserve-3d;
+}
+
+/* Shimmer sweep on card entrance */
+.carousel-card .card-shimmer{
+  position:absolute;
+  inset:0;
+  background:linear-gradient(108deg,
+    transparent 35%,
+    rgba(255,138,43,.22) 50%,
+    rgba(255,255,255,.08) 55%,
+    transparent 65%);
+  transform:translateX(-130%);
+  pointer-events:none;
+  z-index:12;
+  border-radius:inherit;
+}
+.carousel-card.active.do-shimmer .card-shimmer{
+  animation:shimmer-sweep .75s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes shimmer-sweep{
+  0%  {transform:translateX(-130%)}
+  100%{transform:translateX(160%)}
+}
+
+/* Active card glow ring */
+.carousel-card.active{
+  box-shadow:
+    0 0 0 1px rgba(244,121,32,.45),
+    0 0 40px rgba(244,121,32,.08),
+    0 40px 100px rgba(0,0,0,.55);
+}
+
+/* Flash overlay on the viewport */
+.carousel-flash{
+  position:absolute;
+  inset:0;
+  background:radial-gradient(ellipse 60% 60% at 50% 50%,
+    rgba(244,121,32,.28),
+    transparent 70%);
+  pointer-events:none;
+  opacity:0;
+  z-index:30;
+}
+
+/* Dot navigation */
+.carousel-dots{
+  display:flex;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
+  padding-top:36px;
+}
+.cdot{
+  width:9px;height:9px;
+  border-radius:50%;
+  background:rgba(255,255,255,.18);
+  border:none;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  transition:width .45s cubic-bezier(.7,.05,.15,1),
+             background .45s cubic-bezier(.7,.05,.15,1),
+             border-radius .45s cubic-bezier(.7,.05,.15,1),
+             transform .2s ease;
+  padding:0;
+}
+.cdot:hover{transform:scale(1.3);background:rgba(255,255,255,.38)}
+.cdot.active{
+  width:36px;
+  border-radius:5px;
+  background:var(--orange-bright);
+  transform:scale(1);
+}
+.cdot.active::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,.5),
+    transparent);
+  animation:dot-shine .55s ease-out forwards;
+}
+@keyframes dot-shine{
+  from{transform:translateX(-200%)}
+  to  {transform:translateX(200%)}
+}
+/* Ripple on arrow click */
+.car-arrow{
+  overflow:hidden;
+  position:relative;
+}
+.car-arrow .ripple{
+  position:absolute;
+  border-radius:50%;
+  background:rgba(244,121,32,.45);
+  width:8px;height:8px;
+  margin:-4px;
+  pointer-events:none;
+  animation:ripple-out .55s ease-out forwards;
+}
+@keyframes ripple-out{
+  to{transform:scale(12);opacity:0}
+}
+
+/* Floating number badge on active card */
+.card-badge{
+  position:absolute;
+  top:28px;right:28px;
+  background:rgba(14,14,16,.7);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(244,121,32,.3);
+  border-radius:50px;
+  padding:7px 16px;
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.08em;
+  color:rgba(255,255,255,.7);
+  z-index:8;
+  opacity:0;
+  transform:translateY(-8px);
+  transition:opacity .5s .6s var(--ease-out),transform .5s .6s var(--ease-out);
+}
+.card-badge span{color:var(--orange-bright);font-family:var(--display);font-size:15px;font-weight:300}
+.carousel-card.active .card-badge{
+  opacity:1;
+  transform:translateY(0);
+}
+</style>
+</head>
+<body>
+
+<div class="cursor-dot"></div>
+
+<!-- ===== NAV ===== -->
+<nav class="nav dark" id="nav">
+  <a href="#" class="brand">
+  <img src="qms-logo.jpeg" alt="QMS India Logo" style="height: 100px; width: auto; object-fit: contain; transform: translateY(-4px);" />
+</a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#sectors">Sectors</a>
+    <a href="#clients">Clients</a>
+    <a href="#about">About</a>
+    <a href="#awards">Recognitions</a>
+  </div>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="hero">
+  <div class="hero-bg" id="heroBg">
+    <img src="https://images.unsplash.com/photo-1565793979206-6d8fbb7f5e90?w=1920&q=80&auto=format&fit=crop" alt="Industrial facility" class="bg-active" />
+    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=1920&q=80&auto=format&fit=crop" alt="Safety audit inspection" />
+    <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=1920&q=80&auto=format&fit=crop" alt="Energy plant infrastructure" />
+    <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=1920&q=80&auto=format&fit=crop" alt="HSE safety operations" />
+    <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1920&q=80&auto=format&fit=crop" alt="Industrial testing equipment" />
+    <img src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=1920&q=80&auto=format&fit=crop" alt="Engineering and manufacturing" />
+  </div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Sustainable Solutions Since 2000</div>
+      <h1 class="hero-title">
+        <span class="word"><span>Engineering</span></span>
+        <span class="word"><span>safer,</span></span>
+        <span class="word"><span><em>smarter</em></span></span>
+        <span class="word"><span>industry</span></span>
+        <span class="word"><span>at scale.</span></span>
+      </h1>
+      <p class="hero-sub">For over two decades, QMS India Limited has partnered with refineries, mines, plants and infrastructure leaders — turning compliance into competitive advantage across 26 states and 2,500+ industries.</p>
+    </div>
+    <div class="hero-meta">
+      <div class="big">26<span style="color:#fff;opacity:.6">/</span><span style="font-size:32px;vertical-align:top">states</span></div>
+      <div class="label">India-wide footprint</div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===== TICKER ===== -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span class="ticker-item">ISO 9001 : 2015</span>
+    <span class="ticker-item">ISO 14001 : 2015</span>
+    <span class="ticker-item">ISO 45001 Certified</span>
+    <span class="ticker-item">NABL NDT Laboratory</span>
+    <span class="ticker-item">QCI–NBQP Principal Consultant</span>
+    <span class="ticker-item">PESO Compliance Approved</span>
+    <span class="ticker-item">CII-GreenCo Facilitator</span>
+    <span class="ticker-item">AERB Radiography</span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item">ISO 9001 : 2015</span>
+    <span class="ticker-item">ISO 14001 : 2015</span>
+    <span class="ticker-item">ISO 45001 Certified</span>
+    <span class="ticker-item">NABL NDT Laboratory</span>
+    <span class="ticker-item">QCI–NBQP Principal Consultant</span>
+    <span class="ticker-item">PESO Compliance Approved</span>
+    <span class="ticker-item">CII-GreenCo Facilitator</span>
+    <span class="ticker-item">AERB Radiography</span>
+  </div>
+</div>
+
+<!-- ===== CENTER-MODE CAROUSEL : SERVICES ===== -->
+<section class="carousel-section" id="services">
+  <div class="carousel-head reveal">
+    <div>
+    <div class="section-label">What we do</div>
+    <h2>Six practices.<br/>One <em>integrated</em> capability.</h2>
+    </div>
+  </div>
+
+  <div class="carousel-viewport" id="carouselViewport">
+    <div class="carousel-flash" id="carouselFlash"></div>
+    <div class="carousel-track" id="carouselTrack">
+
+      <article class="carousel-card">
+        <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=800&q=80&auto=format&fit=crop" alt="ISO consulting" />
+        <div class="card-shimmer"></div>
+        <div class="card-badge"><span>20+</span> Standards</div>
+        <div class="carousel-card-overlay">
+          <div class="carousel-card-num">01 — CONSULTING</div>
+          <h3 class="carousel-card-title">ISO &amp; Sustainability Consulting</h3>
+          <p class="carousel-card-desc">ISO 9001, 14001, 45001, 50001, IATF 16949, ISO 22163, AS9100D, SA 8000 and 20+ other standards — implemented end-to-end with audit-ready documentation.</p>
+          <a href="#" class="carousel-card-link">Explore practice</a>
+        </div>
+      </article>
+
+      <article class="carousel-card">
+        <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=800&q=80&auto=format&fit=crop" alt="HSE safety audits" />
+        <div class="card-shimmer"></div>
+        <div class="card-badge"><span>HAZOP</span> / QRA Ready</div>
+        <div class="carousel-card-overlay">
+          <div class="carousel-card-num">02 — HSE</div>
+          <h3 class="carousel-card-title">Health, Safety &amp; Environment</h3>
+          <p class="carousel-card-desc">Safety inspections, HAZOP/HIRA/QRA, electrical &amp; fire safety audits, PESO compliances, OSEP, hazardous area classification and dock safety surveys.</p>
+          <a href="#" class="carousel-card-link">Explore practice</a>
+        </div>
+      </article>
+
+      <article class="carousel-card">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&q=80&auto=format&fit=crop" alt="Non-destructive testing" />
+        <div class="card-shimmer"></div>
+        <div class="card-badge"><span>NABL</span> Accredited Lab</div>
+        <div class="carousel-card-overlay">
+          <div class="carousel-card-num">03 — NDT</div>
+          <h3 class="carousel-card-title">Non-Destructive Testing</h3>
+          <p class="carousel-card-desc">NABL-accredited laboratory for UT, MPT, LPT, RT, PAUT, EMAT, thermography, holiday test and helium leak testing — including in-situ metallography &amp; corrosion mapping.</p>
+          <a href="#" class="carousel-card-link">Explore practice</a>
+        </div>
+      </article>
+
+      <article class="carousel-card">
+        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=800&q=80&auto=format&fit=crop" alt="Energy audits" />
+        <div class="card-shimmer"></div>
+        <div class="card-badge"><span>BEE</span> PAT Scheme</div>
+        <div class="carousel-card-overlay">
+          <div class="carousel-card-num">04 — ENERGY</div>
+          <h3 class="carousel-card-title">Energy &amp; Decarbonisation</h3>
+          <p class="carousel-card-desc">Accredited energy audits, ISO 50001 implementation, BEE PAT scheme support, measurement &amp; verification, and compressed-air system optimisation.</p>
+          <a href="#" class="carousel-card-link">Explore practice</a>
+        </div>
+      </article>
+
+      <article class="carousel-card">
+        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80&auto=format&fit=crop" alt="Custom software" />
+        <div class="card-shimmer"></div>
+        <div class="card-badge"><span>EHS</span> SaaS Suite</div>
+        <div class="carousel-card-overlay">
+          <div class="carousel-card-num">05 — IT &amp; IoT</div>
+          <h3 class="carousel-card-title">Custom Software &amp; IoT</h3>
+          <p class="carousel-card-desc">EHS SaaS suites, ERP implementation, asset and incident management software, condition monitoring &amp; workflow automation built for the plant floor.</p>
+          <a href="#" class="carousel-card-link">Explore practice</a>
+        </div>
+      </article>
+
+      <article class="carousel-card">
+        <img src="https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?w=800&q=80&auto=format&fit=crop" alt="Biodiversity surveys" />
+        <div class="card-shimmer"></div>
+        <div class="card-badge"><span>BRSR</span> Aligned</div>
+        <div class="carousel-card-overlay">
+          <div class="carousel-card-num">06 — ESG &amp; OTHER</div>
+          <h3 class="carousel-card-title">ESG, Biodiversity &amp; Social Impact</h3>
+          <p class="carousel-card-desc">BRSR-aligned sustainability reporting, LCA studies, biodiversity surveys, human rights due-diligence, living-wage and gender pay assessments.</p>
+          <a href="#" class="carousel-card-link">Explore practice</a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="carousel-controls">
+    <div class="carousel-progress"><div class="carousel-progress-bar" id="progressBar"></div></div>
+    <div class="carousel-arrows">
+      <button class="car-arrow" id="prevBtn" aria-label="Previous">←</button>
+      <button class="car-arrow" id="nextBtn" aria-label="Next">→</button>
+    </div>
+  </div>
+  <div class="carousel-dots" id="carouselDots"></div>
+</section>
+
+<!-- ===== INTRO + STATS ===== -->
+<section class="intro" id="about">
+  <div class="intro-inner">
+    <div class="reveal">
+      <div class="section-label">About QMS India</div>
+      <h2>Built on technical rigour. Trusted by <em>India's industrial backbone.</em></h2>
+    </div>
+    <div class="intro-text reveal reveal-delay-1">
+      <p>As Principal Consultants registered with NBQP (Quality Council of India), Approved Boiler Repairers in Rajasthan and Competent Institution under Factories Act across six states, we operate at the intersection of safety, sustainability and operational excellence.</p>
+      <p>From IOCL refineries in Paradip to Hindustan Zinc smelters in Rajasthan, from Indian Railways production units to Tata Hexagon plants — our 140-strong team delivers the depth of work that compliance-critical industries demand.</p>
+    </div>
+  </div>
+
+  <div class="stats reveal reveal-delay-2">
+    <div class="stat">
+      <div class="stat-num" data-count="2500">0<span class="plus">+</span></div>
+      <div class="stat-label">Industries served</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" data-count="140">0<span class="plus">+</span></div>
+      <div class="stat-label">Specialists on staff</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" data-count="26">0</div>
+      <div class="stat-label">States across India</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num" data-count="25">0<span class="plus">+</span></div>
+      <div class="stat-label">Years in operation</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DEEP WORK HOVER PANELS ===== -->
+<section class="deepwork-section" id="deepwork">
+  <div class="deepwork-head reveal">
+    <div>
+      <div class="section-label" style="color:var(--orange-bright)">Capabilities in focus</div>
+      <h2>Deep work, where <em>the stakes are highest.</em></h2>
+    </div>
+    <p>Some of our most impactful engagements aren't on a service list — they're in the daily, on-site work that keeps refineries running and mines safe. Click or hover to explore each focus area.</p>
+  </div>
+
+  <div class="panel-strip reveal" id="panelStrip">
+
+    <!-- Left side number -->
+    <div class="panel-side left" id="sideLeft">
+      <div class="panel-side-num" id="sideNumLeft">01</div>
+      <div class="panel-side-label" id="sideLabelLeft">Oil &amp; Gas</div>
+    </div>
+
+    <!-- Panel stage -->
+    <div class="panel-stage" id="panelStage">
+
+      <!-- Panel 1: Oil & Gas -->
+      <div class="panel-item p1 active" id="panel1" onclick="activatePanel(1)">
+        <img src="https://images.unsplash.com/photo-1569012871812-f38ee64cd54c?w=1400&q=85&auto=format&fit=crop" alt="Oil refinery at night" />
+
+        <!-- Inactive label (shown when not active) -->
+        <div class="panel-inactive-label">
+          <div class="p-num">01 — OIL &amp; GAS</div>
+          <div class="p-title">PESO, HAZOP &amp; Process Safety</div>
+        </div>
+
+        <!-- Hover hint circle -->
+        <div class="panel-hover-hint">
+          <div class="hint-circle">→</div>
+        </div>
+
+        <!-- Active content -->
+        <div class="panel-content">
+          <span class="panel-tag">Focus Area 01</span>
+          <div class="panel-num-label">01 — OIL, GAS &amp; PETROCHEMICALS</div>
+          <h3 class="panel-title">From PESO licensing to <em>HAZOP &amp; QRA</em> — full-stack process safety.</h3>
+          <p class="panel-desc">We've worked across IOCL refineries (Paradip, Barauni, Panipat, Guwahati), HPCL Visakhapatnam, BPCL, GAIL pipelines and MNGL — covering everything from pipeline thickness surveys to MCLS dispersion modelling.</p>
+          <div class="panel-chips">
+            <span class="panel-chip">HAZOP / HIRA / QRA</span>
+            <span class="panel-chip">OSEP &amp; Emergency Plans</span>
+            <span class="panel-chip">PESO Licence Approvals</span>
+            <span class="panel-chip">Pipeline Integrity</span>
+            <span class="panel-chip">Hazardous-Area Classification</span>
+            <span class="panel-chip">ERDMP &amp; ISO 17020</span>
+          </div>
+          <a href="#" class="panel-cta-link">See refinery case studies</a>
+          <div class="panel-playing">Now Playing</div>
+        </div>
+      </div>
+
+      <!-- Divider -->
+      <div class="panel-divider div1" id="panelDivider"></div>
+
+      <!-- Panel 2: Mining -->
+      <div class="panel-item p2" id="panel2" onclick="activatePanel(2)">
+        <img src="https://images.unsplash.com/photo-1578496480157-697fc14d2e55?w=1400&q=85&auto=format&fit=crop" alt="Underground mining operation" />
+
+        <!-- Inactive label -->
+        <div class="panel-inactive-label">
+          <div class="p-num">02 — MINING</div>
+          <div class="p-title">DGMS-grade Safety</div>
+        </div>
+
+        <!-- Hover hint circle -->
+        <div class="panel-hover-hint">
+          <div class="hint-circle">→</div>
+        </div>
+
+        <!-- Active content -->
+        <div class="panel-content">
+          <span class="panel-tag">Focus Area 02</span>
+          <div class="panel-num-label">02 — MINING &amp; MINERALS</div>
+          <h3 class="panel-title">DGMS-grade safety, <em>integrated.</em> Above ground and below.</h3>
+          <p class="panel-desc">From Hindustan Zinc's Rampura Agucha and Zawar mines to NALCO Damanjodi, MOIL Nagpur and NTPC lignite mines — ISO 14489-aligned audits, winder NDT, vibration testing and tailings dam inspection.</p>
+          <div class="panel-chips">
+            <span class="panel-chip">Mine Safety Audit</span>
+            <span class="panel-chip">Winder NDT &amp; HEMM</span>
+            <span class="panel-chip">ROPS / FOPS Stability</span>
+            <span class="panel-chip">Ventilation Surveys</span>
+            <span class="panel-chip">Whole-Body Vibration</span>
+            <span class="panel-chip">Tailings Dam Inspection</span>
+          </div>
+          <a href="#" class="panel-cta-link">See mining case studies</a>
+          <div class="panel-playing">Now Playing</div>
+        </div>
+      </div>
+
+    </div><!-- /panel-stage -->
+
+    <!-- Right side number -->
+    <div class="panel-side right" id="sideRight">
+      <div class="panel-side-num" id="sideNumRight">02</div>
+      <div class="panel-side-label" id="sideLabelRight">Mining</div>
+    </div>
+
+  </div><!-- /panel-strip -->
+</section>
+
+<!-- ===== SECTOR GRID ===== -->
+<section class="sectors" id="sectors">
+  <div class="sectors-inner">
+    <div class="sectors-head reveal">
+      <h2>Sectors we <em>know cold.</em></h2>
+      <p>Industries where we've delivered repeat engagements with the country's most demanding compliance environments — and where institutional knowledge compounds into real value for clients.</p>
+    </div>
+
+    <div class="sector-grid">
+      <div class="sector">
+        <div class="sector-num">01</div>
+        <div class="sector-name">Oil, Gas &amp;<br/>Petrochemicals</div>
+        <div class="sector-arrow">→</div>
+      </div>
+      <div class="sector">
+        <div class="sector-num">02</div>
+        <div class="sector-name">Cement &amp;<br/>Mining</div>
+        <div class="sector-arrow">→</div>
+      </div>
+      <div class="sector">
+        <div class="sector-num">03</div>
+        <div class="sector-name">Automotive &amp;<br/>Engineering</div>
+        <div class="sector-arrow">→</div>
+      </div>
+      <div class="sector">
+        <div class="sector-num">04</div>
+        <div class="sector-name">Railways &amp;<br/>Defense</div>
+        <div class="sector-arrow">→</div>
+      </div>
+      <div class="sector">
+        <div class="sector-num">05</div>
+        <div class="sector-name">Power &amp;<br/>Utilities</div>
+        <div class="sector-arrow">→</div>
+      </div>
+      <div class="sector">
+        <div class="sector-num">06</div>
+        <div class="sector-name">Ports &amp;<br/>Shipyards</div>
+        <div class="sector-arrow">→</div>
+      </div>
+      <div class="sector">
+        <div class="sector-num">07</div>
+        <div class="sector-name">Airports &amp;<br/>Infrastructure</div>
+        <div class="sector-arrow">→</div>
+      </div>
+      <div class="sector">
+        <div class="sector-num">08</div>
+        <div class="sector-name">MSME &amp;<br/>Clusters</div>
+        <div class="sector-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CLIENT MARQUEE ===== -->
+<section class="clients" id="clients">
+  <div class="clients-head reveal">
+    <h2>Trusted by India's most <em>compliance-critical</em> operators.</h2>
+    <p>A selection of organisations we've partnered with.</p>
+  </div>
+  <div class="marquee">
+    <span class="client-logo">Hindustan Zinc</span>
+    <span class="client-logo">IOCL</span>
+    <span class="client-logo">GAIL</span>
+    <span class="client-logo">Adani</span>
+    <span class="client-logo">Mahindra</span>
+    <span class="client-logo">JCB</span>
+    <span class="client-logo">Bosch</span>
+    <span class="client-logo">Godrej</span>
+    <span class="client-logo">Daikin</span>
+    <span class="client-logo">Ambuja</span>
+    <span class="client-logo">Ultratech</span>
+    <span class="client-logo">DRDO</span>
+    <span class="client-logo">HAL</span>
+    <span class="client-logo">NHPC</span>
+    <span class="client-logo">NTPC</span>
+    <span class="client-logo">BEML</span>
+    <!-- duplicate -->
+    <span class="client-logo">Hindustan Zinc</span>
+    <span class="client-logo">IOCL</span>
+    <span class="client-logo">GAIL</span>
+    <span class="client-logo">Adani</span>
+    <span class="client-logo">Mahindra</span>
+    <span class="client-logo">JCB</span>
+    <span class="client-logo">Bosch</span>
+    <span class="client-logo">Godrej</span>
+    <span class="client-logo">Daikin</span>
+    <span class="client-logo">Ambuja</span>
+    <span class="client-logo">Ultratech</span>
+    <span class="client-logo">DRDO</span>
+    <span class="client-logo">HAL</span>
+    <span class="client-logo">NHPC</span>
+    <span class="client-logo">NTPC</span>
+    <span class="client-logo">BEML</span>
+  </div>
+</section>
+
+<!-- ===== AWARDS TIMELINE ===== -->
+<section class="awards" id="awards">
+  <div class="awards-inner">
+    <div class="awards-head reveal">
+      <div>
+        <div class="section-label">Awards &amp; recognitions</div>
+        <h2>Recognised, year on year, for the <em>quality of our work.</em></h2>
+      </div>
+      <p>A track record validated by national MSME awards and industry recognitions — including the Economic Times Rajasthan Business Award in 2025.</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item reveal">
+        <div class="timeline-year">2013</div>
+        <div class="timeline-body">
+          <h4>National MSME Award</h4>
+          <p>Third Prize (Micro) — Service Entrepreneurship, Government of India.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-1">
+        <div class="timeline-year">2014</div>
+        <div class="timeline-body">
+          <h4>Sahara Samay Best MSME</h4>
+          <p>First Prize — Rajasthan, Service Entrepreneurship.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-2">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-body">
+          <h4>National MSME Award</h4>
+          <p>First Prize (Micro) — Service Entrepreneurship, awarded at the national stage.</p>
+        </div>
+      </div>
+      <div class="timeline-item reveal reveal-delay-3">
+        <div class="timeline-year">2025</div>
+        <div class="timeline-body">
+          <h4>Economic Times Award</h4>
+          <p>Best MSME Rajasthan — Service Entrepreneurship, First Prize.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA BAND ===== -->
+<section class="cta-band" id="contact">
+  <div class="cta-inner">
+    <h2>Let's talk about <em>your plant.</em></h2>
+    <div class="cta-side">
+      <p>Whether it's a single-site safety audit, a multi-state ISO rollout, or an end-to-end NDT campaign — we can scope a path forward in one conversation.</p>
+      <a href="mailto:contact@qmsil.co.in" class="cta-btn">Request a consultation</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="foot-inner">
+    <div class="foot-brand foot">
+      <a href="#" class="brand">
+        <img src="qms-logo.jpeg" alt="QMS India Logo" style="height: 150px; width: auto; object-fit: contain;" />
+      </a>
+      <p>Sustainable solutions for India's industrial backbone. Consultants, auditors, trainers across Quality, HSE, Energy and Sustainability.</p>
+    </div>
+    <div class="foot">
+      <h5>Practice</h5>
+      <ul>
+        <li><a href="#">Consulting</a></li>
+        <li><a href="#">HSE</a></li>
+        <li><a href="#">NDT</a></li>
+        <li><a href="#">Energy</a></li>
+        <li><a href="#">IT &amp; IoT</a></li>
+      </ul>
+    </div>
+    <div class="foot">
+      <h5>Offices</h5>
+      <ul>
+        <li>Jaipur (Head Office)</li>
+        <li>Mumbai (Corporate)</li>
+        <li>Pune</li>
+        <li>Bengaluru</li>
+        <li>Faridabad &amp; Rudrapur</li>
+      </ul>
+    </div>
+    <div class="foot">
+      <h5>Contact</h5>
+      <ul>
+        <li><a href="mailto:contact@qmsil.co.in">contact@qmsil.co.in</a></li>
+        <li><a href="https://qmsil.co.in">qmsil.co.in</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 QMS India Limited. All rights reserved.</span>
+    <span>Designed for The Crazy Capitaan Studios</span>
+  </div>
+</footer>
+
+<script>
+/* ============================================================
+   1. NAV SCROLL STATE + DARK HERO DETECT
+============================================================ */
+const nav=document.getElementById('nav');
+const hero=document.getElementById('hero');
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  nav.classList.toggle('scrolled',y>60);
+  // dark mode while over dark sections (hero, services, awards)
+  const darkZones=[
+    {el:document.getElementById('hero')},
+    {el:document.getElementById('services')},
+    {el:document.getElementById('awards')}
+  ];
+  let inDark=false;
+  darkZones.forEach(z=>{
+    if(!z.el)return;
+    const r=z.el.getBoundingClientRect();
+    if(r.top<80 && r.bottom>80) inDark=true;
+  });
+  nav.classList.toggle('dark',inDark);
+},{passive:true});
+
+/* mark hero loaded */
+window.addEventListener('load',()=>hero.classList.add('loaded'));
+
+/* ============================================================
+   2. CURSOR DOT
+============================================================ */
+const dot=document.querySelector('.cursor-dot');
+if(matchMedia('(min-width:1024px)').matches){
+  let mx=0,my=0,cx=0,cy=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  const loop=()=>{
+    cx+=(mx-cx)*.22;
+    cy+=(my-cy)*.22;
+    dot.style.transform=`translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+    requestAnimationFrame(loop);
+  };
+  loop();
+  // hover-grow on interactive elements
+  document.querySelectorAll('a,button,.sector,.carousel-card,.stat').forEach(el=>{
+    el.addEventListener('mouseenter',()=>dot.classList.add('hover'));
+    el.addEventListener('mouseleave',()=>dot.classList.remove('hover'));
+  });
+}
+
+/* ============================================================
+   3. REVEAL ON SCROLL (IntersectionObserver)
+============================================================ */
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ============================================================
+   4. STATS COUNT-UP
+============================================================ */
+const statObserver=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target;
+    const target=parseInt(el.dataset.count,10);
+    const dur=1800;
+    const start=performance.now();
+    const plus=el.querySelector('.plus');
+    const plusText=plus?plus.outerHTML:'';
+    const tick=(t)=>{
+      const p=Math.min((t-start)/dur,1);
+      const eased=1-Math.pow(1-p,3);
+      const v=Math.floor(eased*target);
+      el.innerHTML=v.toLocaleString()+plusText;
+      if(p<1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+    statObserver.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('.stat-num[data-count]').forEach(el=>statObserver.observe(el));
+
+/* ============================================================
+   5. INFINITE CENTER-MODE CAROUSEL — ENHANCED
+============================================================ */
+const track = document.getElementById('carouselTrack');
+const viewport = document.getElementById('carouselViewport');
+const flashEl = document.getElementById('carouselFlash');
+const originalCards = Array.from(document.querySelectorAll('.carousel-card'));
+const totalOriginal = originalCards.length;
+
+// Clone cards to create the "never-ending" loop illusion
+const clonesBefore = 3;
+const clonesAfter = 3;
+
+for (let i = totalOriginal - clonesBefore; i < totalOriginal; i++) {
+  let clone = originalCards[i].cloneNode(true);
+  track.insertBefore(clone, track.firstChild);
+}
+for (let i = 0; i < clonesAfter; i++) {
+  let clone = originalCards[i].cloneNode(true);
+  track.appendChild(clone);
+}
+
+const cards = document.querySelectorAll('.carousel-card');
+let activeIdx = clonesBefore;
+
+const prevBtn = document.getElementById('prevBtn');
+const nextBtn = document.getElementById('nextBtn');
+const progressBar = document.getElementById('progressBar');
+const dotsContainer = document.getElementById('carouselDots');
+
+// Build dot nav
+const dotEls = [];
+for (let i = 0; i < totalOriginal; i++) {
+  const d = document.createElement('button');
+  d.className = 'cdot';
+  d.setAttribute('aria-label', `Go to slide ${i+1}`);
+  d.addEventListener('click', () => goTo(i + clonesBefore));
+  dotsContainer.appendChild(d);
+  dotEls.push(d);
+}
+
+let isAnimating = false;
+
+// ── Flash helper ──────────────────────────────────────────
+function triggerFlash() {
+  flashEl.style.transition = 'none';
+  flashEl.style.opacity = '1';
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      flashEl.style.transition = 'opacity .55s ease-out';
+      flashEl.style.opacity = '0';
+    });
+  });
+}
+
+// ── Shimmer helper ────────────────────────────────────────
+function triggerShimmer(card) {
+  card.classList.remove('do-shimmer');
+  void card.offsetWidth; // reflow to restart animation
+  card.classList.add('do-shimmer');
+}
+
+// ── Ripple on buttons ─────────────────────────────────────
+function addRipple(btn, e) {
+  const r = document.createElement('span');
+  r.className = 'ripple';
+  const rect = btn.getBoundingClientRect();
+  r.style.left = (e.clientX - rect.left) + 'px';
+  r.style.top  = (e.clientY - rect.top)  + 'px';
+  btn.appendChild(r);
+  setTimeout(() => r.remove(), 600);
+}
+prevBtn.addEventListener('click', e => addRipple(prevBtn, e));
+nextBtn.addEventListener('click', e => addRipple(nextBtn, e));
+
+// ── Update carousel state ─────────────────────────────────
+function updateCarousel(instant = false) {
+  if (instant) {
+    track.style.transition = 'none';
+    cards.forEach(c => c.style.transition = 'none');
+  } else {
+    track.style.transition = 'transform .8s var(--ease-out)';
+    cards.forEach(c => c.style.transition = '');
+  }
+
+  const card = cards[0];
+  const gap = 30;
+  const cardW = card.offsetWidth;
+  const viewW = viewport.offsetWidth;
+  const offset = (viewW - cardW) / 2;
+
+  track.style.padding = `0 ${offset}px`;
+  track.style.transform = `translateX(${-activeIdx * (cardW + gap)}px)`;
+
+  // Reset tilt on all cards before re-activating
+  cards.forEach(c => { c.style.transform = ''; });
+
+  cards.forEach((c, i) => {
+    c.classList.remove('active', 'adjacent');
+    if (i === activeIdx) {
+      c.classList.add('active');
+      if (!instant) triggerShimmer(c);
+    } else if (Math.abs(i - activeIdx) === 1) {
+      c.classList.add('adjacent');
+    }
+  });
+
+  let realIdx = (activeIdx - clonesBefore) % totalOriginal;
+  if (realIdx < 0) realIdx += totalOriginal;
+
+  // Update progress bar
+  progressBar.style.width = ((realIdx + 1) / totalOriginal * 100) + '%';
+
+  // Update dots
+  dotEls.forEach((d, i) => {
+    d.classList.toggle('active', i === realIdx);
+  });
+
+  prevBtn.disabled = false;
+  nextBtn.disabled = false;
+}
+
+function goTo(i) {
+  if (isAnimating) return;
+  activeIdx = i;
+  updateCarousel();
+  if (!isAnimating) triggerFlash();
+
+  isAnimating = true;
+  setTimeout(() => {
+    isAnimating = false;
+    if (activeIdx >= totalOriginal + clonesBefore) {
+      activeIdx -= totalOriginal;
+      updateCarousel(true);
+    } else if (activeIdx < clonesBefore) {
+      activeIdx += totalOriginal;
+      updateCarousel(true);
+    }
+  }, 800);
+}
+
+prevBtn.addEventListener('click', () => goTo(activeIdx - 1));
+nextBtn.addEventListener('click', () => goTo(activeIdx + 1));
+
+cards.forEach((c, i) => c.addEventListener('click', () => {
+  if (i !== activeIdx) goTo(i);
+}));
+
+/* keyboard */
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight') goTo(activeIdx + 1);
+  if (e.key === 'ArrowLeft')  goTo(activeIdx - 1);
+});
+
+/* swipe / drag */
+let startX = 0, isDown = false, moved = 0;
+viewport.addEventListener('mousedown',  e => { isDown = true; startX = e.clientX; moved = 0; });
+viewport.addEventListener('mousemove',  e => { if (isDown) moved = e.clientX - startX; });
+viewport.addEventListener('mouseup',    () => {
+  if (!isDown) return;
+  isDown = false;
+  if (moved < -50)      goTo(activeIdx + 1);
+  else if (moved > 50)  goTo(activeIdx - 1);
+});
+viewport.addEventListener('mouseleave', () => { isDown = false; });
+
+viewport.addEventListener('touchstart', e => { startX = e.touches[0].clientX; moved = 0; }, { passive:true });
+viewport.addEventListener('touchmove',  e => { moved = e.touches[0].clientX - startX; },    { passive:true });
+viewport.addEventListener('touchend',   () => {
+  if (moved < -50)      goTo(activeIdx + 1);
+  else if (moved > 50)  goTo(activeIdx - 1);
+});
+
+/* resize */
+let rt;
+window.addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(() => updateCarousel(true), 150); });
+
+/* auto-advance */
+let auto = setInterval(() => goTo(activeIdx + 1), 4500);
+viewport.addEventListener('mouseenter', () => clearInterval(auto));
+viewport.addEventListener('mouseleave', () => {
+  clearInterval(auto);
+  auto = setInterval(() => goTo(activeIdx + 1), 4500);
+});
+
+/* init */
+setTimeout(() => updateCarousel(true), 80);
+
+/* ── 3D TILT on active card ───────────────────────────── */
+let tiltRAF = null;
+let targetRotX = 0, targetRotY = 0;
+let currentRotX = 0, currentRotY = 0;
+
+viewport.addEventListener('mousemove', e => {
+  if (isDown) return;                    // don't tilt while dragging
+  const activeCard = cards[activeIdx];
+  if (!activeCard) return;
+
+  const rect = activeCard.getBoundingClientRect();
+  // Only tilt when hovering the active card area
+  const inCard = e.clientX > rect.left - 60 && e.clientX < rect.right + 60
+              && e.clientY > rect.top  - 60 && e.clientY < rect.bottom + 60;
+  if (!inCard) return;
+
+  const dx = (e.clientX - (rect.left + rect.width  / 2)) / (rect.width  / 2);
+  const dy = (e.clientY - (rect.top  + rect.height / 2)) / (rect.height / 2);
+
+  targetRotY =  dx * 10;   // max ±10deg horizontal
+  targetRotX = -dy * 6;    // max ±6deg vertical
+
+  if (!tiltRAF) tiltRAF = requestAnimationFrame(tiltLoop);
+});
+
+viewport.addEventListener('mouseleave', () => {
+  targetRotX = 0;
+  targetRotY = 0;
+  if (!tiltRAF) tiltRAF = requestAnimationFrame(tiltLoop);
+});
+
+function tiltLoop() {
+  const ease = 0.1;
+  currentRotX += (targetRotX - currentRotX) * ease;
+  currentRotY += (targetRotY - currentRotY) * ease;
+
+  const activeCard = cards[activeIdx];
+  if (activeCard) {
+    activeCard.style.transform =
+      `scale(1) rotateX(${currentRotX.toFixed(3)}deg) rotateY(${currentRotY.toFixed(3)}deg)`;
+  }
+
+  const stillMoving = Math.abs(targetRotX - currentRotX) > 0.01
+                   || Math.abs(targetRotY - currentRotY) > 0.01;
+  if (stillMoving) {
+    tiltRAF = requestAnimationFrame(tiltLoop);
+  } else {
+    tiltRAF = null;
+    if (activeCard) activeCard.style.transform = '';
+  }
+}
+
+/* ── Magnetic arrow buttons ───────────────────────────── */
+[prevBtn, nextBtn].forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    const cx = rect.left + rect.width  / 2;
+    const cy = rect.top  + rect.height / 2;
+    const dx = (e.clientX - cx) * 0.28;
+    const dy = (e.clientY - cy) * 0.28;
+    btn.style.transform = `translate(${dx}px, ${dy}px) scale(1.08)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+/* ============================================================
+   5b. DEEP WORK HOVER PANELS
+============================================================ */
+function activatePanel(num) {
+  const p1 = document.getElementById('panel1');
+  const p2 = document.getElementById('panel2');
+  const divider = document.getElementById('panelDivider');
+  const sideNumLeft = document.getElementById('sideNumLeft');
+  const sideLabelLeft = document.getElementById('sideLabelLeft');
+  const sideNumRight = document.getElementById('sideNumRight');
+  const sideLabelRight = document.getElementById('sideLabelRight');
+
+  if (num === 1) {
+    p1.classList.add('active');
+    p2.classList.remove('active');
+    // width handled via CSS
+    p1.style.width = '65%';
+    p2.style.width = '35%';
+    p1.style.left = '0';
+    p2.style.right = '0';
+    divider.style.left = '65%';
+    sideNumLeft.style.color = 'rgba(255,255,255,.55)';
+    sideLabelLeft.style.color = 'var(--orange-bright)';
+    sideNumRight.style.color = 'rgba(255,255,255,.12)';
+    sideLabelRight.style.color = 'rgba(255,255,255,.3)';
+  } else {
+    p2.classList.add('active');
+    p1.classList.remove('active');
+    p2.style.width = '65%';
+    p1.style.width = '35%';
+    p1.style.left = '0';
+    p2.style.right = '0';
+    divider.style.left = '35%';
+    sideNumRight.style.color = 'rgba(255,255,255,.55)';
+    sideLabelRight.style.color = 'var(--orange-bright)';
+    sideNumLeft.style.color = 'rgba(255,255,255,.12)';
+    sideLabelLeft.style.color = 'rgba(255,255,255,.3)';
+  }
+}
+// Init
+activatePanel(1);
+
+// Also allow hover on desktop
+document.getElementById('panel1').addEventListener('mouseenter', () => activatePanel(1));
+document.getElementById('panel2').addEventListener('mouseenter', () => activatePanel(2));
+
+/* ============================================================
+   6. HERO BACKGROUND SLIDESHOW
+============================================================ */
+const bgImgs = document.querySelectorAll('.hero-bg img');
+let bgIdx = 0;
+function rotateBg() {
+  bgImgs[bgIdx].classList.remove('bg-active');
+  bgIdx = (bgIdx + 1) % bgImgs.length;
+  bgImgs[bgIdx].classList.add('bg-active');
+}
+setInterval(rotateBg, 5000);
+
+/* subtle parallax on active hero img */
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY;
+  if(y<window.innerHeight){
+    bgImgs.forEach(img=>{
+      img.style.transform=`scale(1.08) translateY(${y*0.18}px)`;
+    });
+    bgImgs[bgIdx].style.transform=`scale(1) translateY(${y*0.18}px)`;
+  }
+},{passive:true});
+
+</script>
+</body>
+</html>
